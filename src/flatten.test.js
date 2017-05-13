@@ -42,7 +42,7 @@ test('should work with an array', (t) => {
       secondChild,
     ],
   }];
-  const expected = [input, child, grandchild, secondChild];
+  const expected = [input[0], child, grandchild, secondChild];
   const result = flatten(input);
   t.deepEqual(result, expected);
 });

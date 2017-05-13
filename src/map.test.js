@@ -63,7 +63,7 @@ test('should work with currying', (t) => {
       },
     ],
   };
-  const expected = [{
+  const expected = {
     value: 10,
     children: [
       {
@@ -71,7 +71,7 @@ test('should work with currying', (t) => {
         children: [],
       },
     ],
-  }];
+  };
   const mapDoubleValue = map(x => ({ ...x, value: x.value * 2 }));
   const result = mapDoubleValue(input);
   t.deepEqual(result, expected);

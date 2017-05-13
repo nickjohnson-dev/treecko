@@ -39,7 +39,7 @@ test('should work with array', (t) => {
   }];
   const iteratee = sinon.spy();
   each(iteratee, input);
-  t.deepEqual(iteratee.getCall(0).args, [input]);
+  t.deepEqual(iteratee.getCall(0).args, [input[0]]);
   t.deepEqual(iteratee.getCall(1).args, [child]);
   t.deepEqual(iteratee.getCall(2).args, [grandchild]);
 });
