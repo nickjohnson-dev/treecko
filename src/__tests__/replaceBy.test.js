@@ -1,5 +1,5 @@
 import test from 'ava';
-import replaceBy from './replaceBy';
+import replaceBy from '../replaceBy';
 
 test('should return tree with items that satisfy predicate replaced by replacement', (t) => {
   const input = {

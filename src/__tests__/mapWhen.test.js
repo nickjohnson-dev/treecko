@@ -1,7 +1,7 @@
 import test from 'ava';
-import map from './map';
+import mapWhen from '../mapWhen';
 
-test('should return tree with iteratee applied to each item', (t) => {
+test('should return tree with iteratee applied to items that satisfy predicate', (t) => {
   const input = {
     value: 5,
     children: [
@@ -12,7 +12,7 @@ test('should return tree with iteratee applied to each item', (t) => {
     ],
   };
   const expected = {
-    value: 10,
+    value: 5,
     children: [
       {
         value: 20,
@@ -20,10 +20,11 @@ test('should return tree with iteratee applied to each item', (t) => {
       },
     ],
   };
-  const result = map(x => ({
-    ...x,
-    value: x.value * 2,
-  }), input);
+  const result = mapWhen(
+    x => x.value >= 10,
+    x => ({ ...x, value: x.value * 2 }),
+    input,
+  );
   t.deepEqual(result, expected);
 });
 
@@ -38,7 +39,7 @@ test('should work with an array', (t) => {
     ],
   }];
   const expected = [{
-    value: 10,
+    value: 5,
     children: [
       {
         value: 20,
@@ -46,10 +47,11 @@ test('should work with an array', (t) => {
       },
     ],
   }];
-  const result = map(x => ({
-    ...x,
-    value: x.value * 2,
-  }), input);
+  const result = mapWhen(
+    x => x.value >= 10,
+    x => ({ ...x, value: x.value * 2 }),
+    input,
+  );
   t.deepEqual(result, expected);
 });
 
@@ -64,7 +66,7 @@ test('should work with currying', (t) => {
     ],
   };
   const expected = {
-    value: 10,
+    value: 5,
     children: [
       {
         value: 20,
@@ -72,7 +74,10 @@ test('should work with currying', (t) => {
       },
     ],
   };
-  const mapDoubleValue = map(x => ({ ...x, value: x.value * 2 }));
-  const result = mapDoubleValue(input);
+  const mapWhenDoubleDigits = mapWhen(x => x.value >= 10);
+  const result = mapWhenDoubleDigits(
+    x => ({ ...x, value: x.value * 2 }),
+    input,
+  );
   t.deepEqual(result, expected);
 });

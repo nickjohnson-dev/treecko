@@ -1,6 +1,6 @@
 import get from 'lodash/fp/get';
 import test from 'ava';
-import findOr from './findOr';
+import findOr from '../findOr';
 
 test('should return first node in tree that satisfies predicate, in a depth first fashion', (t) => {
   const grandchild = {

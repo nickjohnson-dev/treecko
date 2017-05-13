@@ -1,5 +1,5 @@
 import test from 'ava';
-import superflatten from './superflatten';
+import superflatten from '../superflatten';
 
 test('should return array with items of tree in a depth first fashion, omitting children from the items', (t) => {
   const grandchild = {

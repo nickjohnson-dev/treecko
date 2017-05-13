@@ -1,7 +1,6 @@
 import curry from 'lodash/fp/curry';
 import isArray from 'lodash/fp/isArray';
 import isObject from 'lodash/fp/isObject';
-// import reduce from 'lodash/fp/reduce';
 import findOr from './findOr';
 
 function reduceAncestryBy(predicate, reducer, acc, xs) {

@@ -1,5 +1,5 @@
 import test from 'ava';
-import reduceAncestryBy from './reduceAncestryBy';
+import reduceAncestryBy from '../reduceAncestryBy';
 
 test('should return single value created by reducing ancestry starting with first item in a depth first search that satisfies predicate', (t) => {
   const input = {

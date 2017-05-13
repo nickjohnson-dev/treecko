@@ -1,5 +1,5 @@
 import test from 'ava';
-import flattenToMap from './flattenToMap';
+import flattenToMap from '../flattenToMap';
 
 test('should return object map with tree items, children omitted, assigned to the key of their id', (t) => {
   const grandchild = {

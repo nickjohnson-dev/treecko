@@ -1,5 +1,5 @@
 import test from 'ava';
-import reduce from './reduce';
+import reduce from '../reduce';
 
 test('should reduce the items in the tree to a single value, in a depth first fashion', (t) => {
   const input = {

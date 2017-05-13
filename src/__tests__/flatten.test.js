@@ -1,5 +1,5 @@
 import test from 'ava';
-import flatten from './flatten';
+import flatten from '../flatten';
 
 test('should return array with items of tree flattened in a depth first fashion', (t) => {
   const grandchild = {

@@ -1,6 +1,6 @@
 import test from 'ava';
 import sinon from 'sinon';
-import each from './each';
+import each from '../each';
 
 test('should invoke iteratee with each node in tree, in a depth first fashion', (t) => {
   const grandchild = {
