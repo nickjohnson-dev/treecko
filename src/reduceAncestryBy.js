@@ -4,9 +4,9 @@ import isObject from 'lodash/fp/isObject';
 import findOr from './findOr';
 
 function reduceAncestryBy(predicate, reducer, acc, xs) {
-  const cur = findOr('error', predicate, xs);
+  const cur = findOr('notfound', predicate, xs);
 
-  if (cur === 'error') return acc;
+  if (cur === 'notfound') return acc;
 
   return reduceAncestryBy(
     x => x.id === cur.parentId,
