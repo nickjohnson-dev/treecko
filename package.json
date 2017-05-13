@@ -43,7 +43,8 @@
   "ava": {
     "require": [
       "babel-register"
-    ]
+    ],
+    "babel": "inherit"
   },
   "dependencies": {
     "lodash": "4.17.4"
