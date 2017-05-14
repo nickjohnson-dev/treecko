@@ -10,7 +10,7 @@ test('should return tree with first item that satisfies predicate in depth first
     children: [
       {
         id: '1',
-        name: 'nick',
+        name: 'treecko',
         children: [
           {
             id: '2',
@@ -33,7 +33,7 @@ test('should return tree with first item that satisfies predicate in depth first
     children: [
       {
         id: '1',
-        name: 'nick',
+        name: 'treecko',
         children: [],
       },
       {
@@ -62,7 +62,7 @@ test('should work with an array', (t) => {
   const data = [
     {
       id: '0',
-      name: 'nick',
+      name: 'treecko',
       children: [
         {
           id: '1',
@@ -81,7 +81,7 @@ test('should work with an array', (t) => {
   const expected = [
     {
       id: '0',
-      name: 'nick',
+      name: 'treecko',
       children: [],
     },
     {
@@ -112,7 +112,7 @@ test('should work with currying', (t) => {
     children: [
       {
         id: '1',
-        name: 'nick',
+        name: 'treecko',
         children: [
           {
             id: '2',
@@ -135,7 +135,7 @@ test('should work with currying', (t) => {
     children: [
       {
         id: '1',
-        name: 'nick',
+        name: 'treecko',
         children: [],
       },
       {

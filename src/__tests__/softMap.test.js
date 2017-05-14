@@ -21,7 +21,6 @@ test('should return tree with iteratee applied to each item, preserving children
     ],
   };
   const result = softMap(x => ({
-    ...x,
     value: x.value * 2,
   }), data);
   t.deepEqual(result, expected);
@@ -47,7 +46,6 @@ test('should work with an array', (t) => {
     ],
   }];
   const result = softMap(x => ({
-    ...x,
     value: x.value * 2,
   }), data);
   t.deepEqual(result, expected);
@@ -72,7 +70,7 @@ test('should work with currying', (t) => {
       },
     ],
   };
-  const softMapDoubleValue = softMap(x => ({ ...x, value: x.value * 2 }));
+  const softMapDoubleValue = softMap(x => ({ value: x.value * 2 }));
   const result = softMapDoubleValue(data);
   t.deepEqual(result, expected);
 });

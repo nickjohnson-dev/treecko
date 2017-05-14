@@ -10,7 +10,7 @@ test('should return single value created by reducing ancestry starting with firs
       {
         id: '1',
         parentId: '0',
-        name: 'nick',
+        name: 'treecko',
         children: [
           {
             id: '2',
@@ -22,7 +22,7 @@ test('should return single value created by reducing ancestry starting with firs
       },
     ],
   };
-  const expected = '/users/nick/documents';
+  const expected = '/users/treecko/documents';
   const result = reduceAncestryBy(
     x => x.id === '2',
     (acc, cur) => `/${cur.name}${acc}`,
@@ -42,7 +42,7 @@ test('should work with an array', (t) => {
         {
           id: '2',
           parentId: '1',
-          name: 'nick',
+          name: 'treecko',
           children: [],
         },
       ],
@@ -61,7 +61,7 @@ test('should work with an array', (t) => {
       ],
     },
   ];
-  const expected = '/users/nick';
+  const expected = '/users/treecko';
   const result = reduceAncestryBy(
     x => x.id === '2',
     (acc, cur) => `/${cur.name}${acc}`,
@@ -80,7 +80,7 @@ test('should work with currying', (t) => {
       {
         id: '1',
         parentId: '0',
-        name: 'nick',
+        name: 'treecko',
         children: [
           {
             id: '2',
@@ -92,7 +92,7 @@ test('should work with currying', (t) => {
       },
     ],
   };
-  const expected = '/users/nick/documents';
+  const expected = '/users/treecko/documents';
   const getFullPath = reduceAncestryBy(x => x.id === '2');
   const result = getFullPath(
     (acc, cur) => `/${cur.name}${acc}`,

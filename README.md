@@ -55,7 +55,6 @@ A collection of **functional** and **immutable** tree helpers.
 
 ### Restructuring
 
-- [replaceBy](docs/helpers/replaceBy.md)
 - [replaceChildrenBy](docs/helpers/replaceChildrenBy.md)
 - [addChildBy](docs/helpers/addChildBy.md)
 - [changeParent](docs/helpers/changeParent.md)

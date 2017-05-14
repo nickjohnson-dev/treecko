@@ -9,7 +9,7 @@ test('should return tree with first item that satisfies predicate having its chi
     children: [
       {
         id: '1',
-        name: 'nick',
+        name: 'treecko',
         children: [],
       },
     ],
@@ -20,7 +20,7 @@ test('should return tree with first item that satisfies predicate having its chi
     children: [
       {
         id: '1',
-        name: 'nick',
+        name: 'treecko',
         children: [
           child,
         ],
@@ -44,7 +44,7 @@ test('should work with an array', (t) => {
       children: [
         {
           id: '1',
-          name: 'nick',
+          name: 'treecko',
           children: [],
         },
       ],
@@ -67,7 +67,7 @@ test('should work with an array', (t) => {
       children: [
         {
           id: '1',
-          name: 'nick',
+          name: 'treecko',
           children: [
             child,
           ],
@@ -101,7 +101,7 @@ test('should work with currying', (t) => {
     children: [
       {
         id: '1',
-        name: 'nick',
+        name: 'treecko',
         children: [],
       },
     ],
@@ -112,7 +112,7 @@ test('should work with currying', (t) => {
     children: [
       {
         id: '1',
-        name: 'nick',
+        name: 'treecko',
         children: [
           child,
         ],
