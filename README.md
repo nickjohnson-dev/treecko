@@ -9,7 +9,7 @@
 
 [![npm version](https://badge.fury.io/js/treecko.svg)](https://badge.fury.io/js/treecko)
 
-A collection of **functional** and **immutable** tree helpers.
+A collection of **functional** and **immutable** helpers for working with **tree** data structures.
 
 - All of the following helpers support tree objects as well as arrays of tree objects.
 - All methods are curried, so you can use partial application.
