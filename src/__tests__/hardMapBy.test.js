@@ -1,5 +1,5 @@
 import test from 'ava';
-import mapWhen from '../mapWhen';
+import hardMapBy from '../hardMapBy';
 
 test('should return tree with iteratee applied to items that satisfy predicate', (t) => {
   const input = {
@@ -16,13 +16,12 @@ test('should return tree with iteratee applied to items that satisfy predicate',
     children: [
       {
         value: 20,
-        children: [],
       },
     ],
   };
-  const result = mapWhen(
+  const result = hardMapBy(
     x => x.value >= 10,
-    x => ({ ...x, value: x.value * 2 }),
+    x => ({ value: x.value * 2 }),
     input,
   );
   t.deepEqual(result, expected);
@@ -43,13 +42,12 @@ test('should work with an array', (t) => {
     children: [
       {
         value: 20,
-        children: [],
       },
     ],
   }];
-  const result = mapWhen(
+  const result = hardMapBy(
     x => x.value >= 10,
-    x => ({ ...x, value: x.value * 2 }),
+    x => ({ value: x.value * 2 }),
     input,
   );
   t.deepEqual(result, expected);
@@ -70,13 +68,12 @@ test('should work with currying', (t) => {
     children: [
       {
         value: 20,
-        children: [],
       },
     ],
   };
-  const mapWhenDoubleDigits = mapWhen(x => x.value >= 10);
-  const result = mapWhenDoubleDigits(
-    x => ({ ...x, value: x.value * 2 }),
+  const mapDoubleDigits = hardMapBy(x => x.value >= 10);
+  const result = mapDoubleDigits(
+    x => ({ value: x.value * 2 }),
     input,
   );
   t.deepEqual(result, expected);

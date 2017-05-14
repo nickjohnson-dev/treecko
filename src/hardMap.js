@@ -2,22 +2,19 @@ import curry from 'lodash/fp/curry';
 import first from 'lodash/fp/first';
 import isArray from 'lodash/fp/isArray';
 import isObject from 'lodash/fp/isObject';
-import lodashMap from 'lodash/fp/map';
+import map from 'lodash/fp/map';
 
-function map(iteratee, xs) {
-  return lodashMap(x => ({
-    ...iteratee(x),
-    children: map(iteratee, x.children),
-  }), xs);
+function hardMap(iteratee, xs) {
+  return map(x => iteratee(x), xs);
 }
 
 export default curry((iteratee, data) => {
   if (isArray(data)) {
-    return map(iteratee, data);
+    return hardMap(iteratee, data);
   }
 
   if (isObject(data)) {
-    return first(map(iteratee, [data]));
+    return first(hardMap(iteratee, [data]));
   }
 
   return undefined;

@@ -1,7 +1,7 @@
 import test from 'ava';
-import map from '../map';
+import softMap from '../softMap';
 
-test('should return tree with iteratee applied to each item', (t) => {
+test('should return tree with iteratee applied to each item, preserving children', (t) => {
   const input = {
     value: 5,
     children: [
@@ -20,7 +20,7 @@ test('should return tree with iteratee applied to each item', (t) => {
       },
     ],
   };
-  const result = map(x => ({
+  const result = softMap(x => ({
     ...x,
     value: x.value * 2,
   }), input);
@@ -46,7 +46,7 @@ test('should work with an array', (t) => {
       },
     ],
   }];
-  const result = map(x => ({
+  const result = softMap(x => ({
     ...x,
     value: x.value * 2,
   }), input);
@@ -72,7 +72,7 @@ test('should work with currying', (t) => {
       },
     ],
   };
-  const mapDoubleValue = map(x => ({ ...x, value: x.value * 2 }));
-  const result = mapDoubleValue(input);
+  const softMapDoubleValue = softMap(x => ({ ...x, value: x.value * 2 }));
+  const result = softMapDoubleValue(input);
   t.deepEqual(result, expected);
 });
