@@ -10,7 +10,6 @@ import hasId from './hasId';
 import reduce from './reduce';
 import reduceAncestryBy from './reduceAncestryBy';
 import reject from './reject';
-import replaceBy from './replaceBy';
 import replaceChildrenBy from './replaceChildrenBy';
 import softMap from './softMap';
 import softMapBy from './softMapBy';
@@ -29,7 +28,6 @@ export default {
   reduce,
   reduceAncestryBy,
   reject,
-  replaceBy,
   replaceChildrenBy,
   softMap,
   softMapBy,

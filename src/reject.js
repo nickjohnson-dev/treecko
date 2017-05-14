@@ -8,8 +8,8 @@ import map from 'lodash/fp/map';
 function reject(predicate, xs) {
   return map(x => ({
     ...x,
-    children: reject(predicate, lodashReject(predicate, x.children)),
-  }), xs);
+    children: reject(predicate, x.children),
+  }), lodashReject(predicate, xs));
 }
 
 export default curry((predicate, data) => {

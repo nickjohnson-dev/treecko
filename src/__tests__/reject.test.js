@@ -7,39 +7,11 @@ test('should return tree without items that satisfy predicate', (t) => {
     children: [
       {
         age: 40,
-        children: [
-          {
-            age: 56,
-            children: [
-              {
-                age: 106,
-                children: [],
-              },
-            ],
-          },
-          {
-            age: 30,
-            children: [],
-          },
-        ],
+        children: [],
       },
       {
         age: 150,
-        children: [
-          {
-            age: 16,
-            children: [
-              {
-                age: 101,
-                children: [],
-              },
-            ],
-          },
-          {
-            age: 99,
-            children: [],
-          },
-        ],
+        children: [],
       },
     ],
   };
@@ -48,16 +20,7 @@ test('should return tree without items that satisfy predicate', (t) => {
     children: [
       {
         age: 40,
-        children: [
-          {
-            age: 56,
-            children: [],
-          },
-          {
-            age: 30,
-            children: [],
-          },
-        ],
+        children: [],
       },
     ],
   };
@@ -66,65 +29,22 @@ test('should return tree without items that satisfy predicate', (t) => {
 });
 
 test('should work with array', (t) => {
-  const data = [{
-    age: 25,
-    children: [
-      {
-        age: 40,
-        children: [
-          {
-            age: 56,
-            children: [
-              {
-                age: 106,
-                children: [],
-              },
-            ],
-          },
-          {
-            age: 30,
-            children: [],
-          },
-        ],
-      },
-      {
-        age: 150,
-        children: [
-          {
-            age: 16,
-            children: [
-              {
-                age: 101,
-                children: [],
-              },
-            ],
-          },
-          {
-            age: 99,
-            children: [],
-          },
-        ],
-      },
-    ],
-  }];
-  const expected = [{
-    age: 25,
-    children: [
-      {
-        age: 40,
-        children: [
-          {
-            age: 56,
-            children: [],
-          },
-          {
-            age: 30,
-            children: [],
-          },
-        ],
-      },
-    ],
-  }];
+  const data = [
+    {
+      age: 40,
+      children: [],
+    },
+    {
+      age: 150,
+      children: [],
+    },
+  ];
+  const expected = [
+    {
+      age: 40,
+      children: [],
+    },
+  ];
   const result = reject(x => x.age > 100, data);
   t.deepEqual(result, expected);
 });
@@ -135,39 +55,11 @@ test('should work with currying', (t) => {
     children: [
       {
         age: 40,
-        children: [
-          {
-            age: 56,
-            children: [
-              {
-                age: 106,
-                children: [],
-              },
-            ],
-          },
-          {
-            age: 30,
-            children: [],
-          },
-        ],
+        children: [],
       },
       {
         age: 150,
-        children: [
-          {
-            age: 16,
-            children: [
-              {
-                age: 101,
-                children: [],
-              },
-            ],
-          },
-          {
-            age: 99,
-            children: [],
-          },
-        ],
+        children: [],
       },
     ],
   };
@@ -176,16 +68,7 @@ test('should work with currying', (t) => {
     children: [
       {
         age: 40,
-        children: [
-          {
-            age: 56,
-            children: [],
-          },
-          {
-            age: 30,
-            children: [],
-          },
-        ],
+        children: [],
       },
     ],
   };

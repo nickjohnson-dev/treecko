@@ -8,8 +8,8 @@ import map from 'lodash/fp/map';
 function filter(predicate, xs) {
   return map(x => ({
     ...x,
-    children: filter(predicate, lodashFilter(predicate, x.children)),
-  }), xs);
+    children: filter(predicate, x.children),
+  }), lodashFilter(predicate, xs));
 }
 
 export default curry((predicate, data) => {
