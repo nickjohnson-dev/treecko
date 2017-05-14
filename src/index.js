@@ -6,6 +6,7 @@ import flatten from './flatten';
 import flattenToMap from './flattenToMap';
 import hardMap from './hardMap';
 import hardMapBy from './hardMapBy';
+import hasId from './hasId';
 import reduce from './reduce';
 import reduceAncestryBy from './reduceAncestryBy';
 import reject from './reject';
@@ -24,6 +25,7 @@ export default {
   flattenToMap,
   hardMap,
   hardMapBy,
+  hasId,
   reduce,
   reduceAncestryBy,
   reject,
