@@ -2,7 +2,7 @@ import test from 'ava';
 import hardMap from '../hardMap';
 
 test('should return tree with iteratee applied to each item', (t) => {
-  const input = {
+  const data = {
     value: 5,
     children: [
       {
@@ -16,12 +16,12 @@ test('should return tree with iteratee applied to each item', (t) => {
   };
   const result = hardMap(x => ({
     value: x.value * 2,
-  }), input);
+  }), data);
   t.deepEqual(result, expected);
 });
 
 test('should work with an array', (t) => {
-  const input = [{
+  const data = [{
     value: 5,
     children: [
       {
@@ -35,12 +35,12 @@ test('should work with an array', (t) => {
   }];
   const result = hardMap(x => ({
     value: x.value * 2,
-  }), input);
+  }), data);
   t.deepEqual(result, expected);
 });
 
 test('should work with currying', (t) => {
-  const input = {
+  const data = {
     value: 5,
     children: [
       {
@@ -53,6 +53,6 @@ test('should work with currying', (t) => {
     value: 10,
   };
   const hardMapDoubleValue = hardMap(x => ({ value: x.value * 2 }));
-  const result = hardMapDoubleValue(input);
+  const result = hardMapDoubleValue(data);
   t.deepEqual(result, expected);
 });

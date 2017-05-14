@@ -2,7 +2,7 @@ import test from 'ava';
 import softMapBy from '../softMapBy';
 
 test('should return tree with iteratee applied to items that satisfy predicate, preserving children', (t) => {
-  const input = {
+  const data = {
     value: 5,
     children: [
       {
@@ -23,13 +23,13 @@ test('should return tree with iteratee applied to items that satisfy predicate, 
   const result = softMapBy(
     x => x.value >= 10,
     x => ({ ...x, value: x.value * 2 }),
-    input,
+    data,
   );
   t.deepEqual(result, expected);
 });
 
 test('should work with an array', (t) => {
-  const input = [{
+  const data = [{
     value: 5,
     children: [
       {
@@ -50,13 +50,13 @@ test('should work with an array', (t) => {
   const result = softMapBy(
     x => x.value >= 10,
     x => ({ ...x, value: x.value * 2 }),
-    input,
+    data,
   );
   t.deepEqual(result, expected);
 });
 
 test('should work with currying', (t) => {
-  const input = {
+  const data = {
     value: 5,
     children: [
       {
@@ -77,7 +77,7 @@ test('should work with currying', (t) => {
   const mapDoubleDigits = softMapBy(x => x.value >= 10);
   const result = mapDoubleDigits(
     x => ({ ...x, value: x.value * 2 }),
-    input,
+    data,
   );
   t.deepEqual(result, expected);
 });

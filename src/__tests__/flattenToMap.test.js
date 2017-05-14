@@ -19,7 +19,7 @@ test('should return object map with tree items, children omitted, assigned to th
     parentId: 'a',
     children: [],
   };
-  const input = {
+  const data = {
     id: 'a',
     parentId: '',
     children: [
@@ -33,7 +33,7 @@ test('should return object map with tree items, children omitted, assigned to th
     c: { id: 'c', parentId: 'b' },
     d: { id: 'd', parentId: 'a' },
   };
-  const result = flattenToMap(input);
+  const result = flattenToMap(data);
   t.deepEqual(result, expected);
 });
 
@@ -55,7 +55,7 @@ test('should work with an array', (t) => {
     parentId: 'a',
     children: [],
   };
-  const input = [{
+  const data = [{
     id: 'a',
     parentId: '',
     children: [
@@ -69,6 +69,6 @@ test('should work with an array', (t) => {
     c: { id: 'c', parentId: 'b' },
     d: { id: 'd', parentId: 'a' },
   };
-  const result = flattenToMap(input);
+  const result = flattenToMap(data);
   t.deepEqual(result, expected);
 });

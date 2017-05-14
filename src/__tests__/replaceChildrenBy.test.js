@@ -5,7 +5,7 @@ test('should return tree with first item that satisfies predicate having its chi
   const replacementChildren = [
     { id: 'a' },
   ];
-  const input = {
+  const data = {
     id: '0',
     parentId: '',
     name: 'users',
@@ -47,7 +47,7 @@ test('should return tree with first item that satisfies predicate having its chi
   const result = replaceChildrenBy(
     x => x.id === '1',
     () => replacementChildren,
-    input,
+    data,
   );
   t.deepEqual(result, expected);
 });
@@ -56,7 +56,7 @@ test('should work with an array', (t) => {
   const replacementChildren = [
     { id: 'a' },
   ];
-  const input = [{
+  const data = [{
     id: '0',
     parentId: '',
     name: 'users',
@@ -98,7 +98,7 @@ test('should work with an array', (t) => {
   const result = replaceChildrenBy(
     x => x.id === '1',
     () => replacementChildren,
-    input,
+    data,
   );
   t.deepEqual(result, expected);
 });
@@ -107,7 +107,7 @@ test('should work with currying', (t) => {
   const replacementChildren = [
     { id: 'a' },
   ];
-  const input = {
+  const data = {
     id: '0',
     parentId: '',
     name: 'users',
@@ -149,7 +149,7 @@ test('should work with currying', (t) => {
   const replaceId1Children = replaceChildrenBy(x => x.id === '1');
   const result = replaceId1Children(
     () => replacementChildren,
-    input,
+    data,
   );
   t.deepEqual(result, expected);
 });

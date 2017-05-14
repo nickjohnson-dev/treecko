@@ -13,14 +13,14 @@ test('should return array with items of tree flattened in a depth first fashion'
   const secondChild = {
     children: [],
   };
-  const input = {
+  const data = {
     children: [
       child,
       secondChild,
     ],
   };
-  const expected = [input, child, grandchild, secondChild];
-  const result = flatten(input);
+  const expected = [data, child, grandchild, secondChild];
+  const result = flatten(data);
   t.deepEqual(result, expected);
 });
 
@@ -36,13 +36,13 @@ test('should work with an array', (t) => {
   const secondChild = {
     children: [],
   };
-  const input = [{
+  const data = [{
     children: [
       child,
       secondChild,
     ],
   }];
-  const expected = [input[0], child, grandchild, secondChild];
-  const result = flatten(input);
+  const expected = [data[0], child, grandchild, secondChild];
+  const result = flatten(data);
   t.deepEqual(result, expected);
 });

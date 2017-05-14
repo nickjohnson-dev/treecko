@@ -2,7 +2,7 @@ import test from 'ava';
 import reduceAncestryBy from '../reduceAncestryBy';
 
 test('should return single value created by reducing ancestry starting with first item in a depth first search that satisfies predicate', (t) => {
-  const input = {
+  const data = {
     id: '0',
     parentId: '',
     name: 'users',
@@ -52,13 +52,13 @@ test('should return single value created by reducing ancestry starting with firs
     x => x.id === '2',
     (acc, cur) => `/${cur.name}${acc}`,
     '',
-    input,
+    data,
   );
   t.deepEqual(result, expected);
 });
 
 test('should work with an array', (t) => {
-  const input = [{
+  const data = [{
     id: '0',
     parentId: '',
     name: 'users',
@@ -108,13 +108,13 @@ test('should work with an array', (t) => {
     x => x.id === '2',
     (acc, cur) => `/${cur.name}${acc}`,
     '',
-    input,
+    data,
   );
   t.deepEqual(result, expected);
 });
 
 test('should work with currying', (t) => {
-  const input = {
+  const data = {
     id: '0',
     parentId: '',
     name: 'users',
@@ -164,7 +164,7 @@ test('should work with currying', (t) => {
   const result = getFullPath(
     (acc, cur) => `/${cur.name}${acc}`,
     '',
-    input,
+    data,
   );
   t.deepEqual(result, expected);
 });

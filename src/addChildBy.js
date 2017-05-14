@@ -4,21 +4,21 @@ import isArray from 'lodash/fp/isArray';
 import isObject from 'lodash/fp/isObject';
 import replaceChildrenBy from './replaceChildrenBy';
 
-function addChildBy(predicate, childToAdd, xs) {
+function addChildBy(predicate, getChild, xs) {
   return replaceChildrenBy(
     predicate,
-    x => [...x.children, childToAdd],
+    x => [...x.children, getChild(x)],
     xs,
   );
 }
 
-export default curry((predicate, childToAdd, data) => {
+export default curry((predicate, getChild, data) => {
   if (isArray(data)) {
-    return addChildBy(predicate, childToAdd, data);
+    return addChildBy(predicate, getChild, data);
   }
 
   if (isObject(data)) {
-    return first(addChildBy(predicate, childToAdd, [data]));
+    return first(addChildBy(predicate, getChild, [data]));
   }
 
   return undefined;

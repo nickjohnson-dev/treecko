@@ -2,7 +2,7 @@ import test from 'ava';
 import reduce from '../reduce';
 
 test('should reduce the items in the tree to a single value, in a depth first fashion', (t) => {
-  const input = {
+  const data = {
     value: 5,
     children: [
       {
@@ -15,13 +15,13 @@ test('should reduce the items in the tree to a single value, in a depth first fa
   const result = reduce(
     (acc, cur) => acc + cur.value,
     0,
-    input,
+    data,
   );
   t.deepEqual(result, expected);
 });
 
 test('should work with an array', (t) => {
-  const input = [{
+  const data = [{
     value: 5,
     children: [
       {
@@ -34,13 +34,13 @@ test('should work with an array', (t) => {
   const result = reduce(
     (acc, cur) => acc + cur.value,
     0,
-    input,
+    data,
   );
   t.deepEqual(result, expected);
 });
 
 test('should work currying', (t) => {
-  const input = [{
+  const data = [{
     value: 5,
     children: [
       {
@@ -53,7 +53,7 @@ test('should work currying', (t) => {
   const sumReduce = reduce((acc, cur) => acc + cur.value);
   const result = sumReduce(
     0,
-    input,
+    data,
   );
   t.deepEqual(result, expected);
 });

@@ -1,7 +1,7 @@
 import test from 'ava';
-import reject from '../reject';
+import filter from '../filter';
 
-test('should return tree without items that satisfy predicate', (t) => {
+test('should return tree with only items that satisfy predicate', (t) => {
   const data = {
     age: 25,
     children: [
@@ -61,7 +61,7 @@ test('should return tree without items that satisfy predicate', (t) => {
       },
     ],
   };
-  const result = reject(x => x.age > 100, data);
+  const result = filter(x => x.age < 100, data);
   t.deepEqual(result, expected);
 });
 
@@ -125,7 +125,7 @@ test('should work with array', (t) => {
       },
     ],
   }];
-  const result = reject(x => x.age > 100, data);
+  const result = filter(x => x.age < 100, data);
   t.deepEqual(result, expected);
 });
 
@@ -189,7 +189,7 @@ test('should work with currying', (t) => {
       },
     ],
   };
-  const rejectOutdated = reject(x => x.age > 100);
-  const result = rejectOutdated(data);
+  const filterWithinDate = filter(x => x.age < 100);
+  const result = filterWithinDate(data);
   t.deepEqual(result, expected);
 });

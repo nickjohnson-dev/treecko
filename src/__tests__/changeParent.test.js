@@ -1,91 +1,49 @@
 import test from 'ava';
 import changeParent from '../changeParent';
+import hasId from '../hasId';
+
 // eslint-disable-next-line max-len
 test('should return tree with first item that satisfies predicate in depth first search moved to be a child of first item that satisfies newParentPredicate', (t) => {
-  const input = {
+  const data = {
     id: '0',
-    parentId: '',
     name: 'users',
     children: [
       {
         id: '1',
-        parentId: '0',
         name: 'nick',
         children: [
           {
             id: '2',
-            parentId: '1',
             name: 'documents',
-            children: [],
-          },
-          {
-            id: '3',
             parentId: '1',
-            name: 'pictures',
             children: [],
           },
         ],
       },
       {
-        id: '4',
-        parentId: '0',
+        id: '3',
         name: 'shared',
-        children: [
-          {
-            id: '5',
-            parentId: '4',
-            name: 'documents',
-            children: [],
-          },
-          {
-            id: '6',
-            parentId: '4',
-            name: 'pictures',
-            children: [],
-          },
-        ],
+        children: [],
       },
     ],
   };
   const expected = {
     id: '0',
-    parentId: '',
     name: 'users',
     children: [
       {
         id: '1',
-        parentId: '0',
         name: 'nick',
-        children: [
-          {
-            id: '3',
-            parentId: '1',
-            name: 'pictures',
-            children: [],
-          },
-        ],
+        children: [],
       },
       {
-        id: '4',
-        parentId: '0',
+        id: '3',
         name: 'shared',
         children: [
           {
-            id: '5',
-            parentId: '4',
-            name: 'documents',
-            children: [],
-          },
-          {
-            id: '6',
-            parentId: '4',
-            name: 'pictures',
-            children: [],
-          },
-          {
             id: '2',
-            parentId: '4',
             name: 'documents',
+            parentId: '3',
             children: [],
           },
         ],
@@ -93,207 +51,108 @@ test('should return tree with first item that satisfies predicate in depth first
     ],
   };
   const result = changeParent(
-    x => x.id === '2',
-    x => x.id === '4',
-    input,
+    hasId('3'),
+    hasId('2'),
+    data,
   );
   t.deepEqual(result, expected);
 });
 
 test('should work with an array', (t) => {
-  const input = [{
-    id: '0',
-    parentId: '',
-    name: 'users',
-    children: [
-      {
-        id: '1',
-        parentId: '0',
-        name: 'nick',
-        children: [
-          {
-            id: '2',
-            parentId: '1',
-            name: 'documents',
-            children: [],
-          },
-          {
-            id: '3',
-            parentId: '1',
-            name: 'pictures',
-            children: [],
-          },
-        ],
-      },
-      {
-        id: '4',
-        parentId: '0',
-        name: 'shared',
-        children: [
-          {
-            id: '5',
-            parentId: '4',
-            name: 'documents',
-            children: [],
-          },
-          {
-            id: '6',
-            parentId: '4',
-            name: 'pictures',
-            children: [],
-          },
-        ],
-      },
-    ],
-  }];
-  const expected = [{
-    id: '0',
-    parentId: '',
-    name: 'users',
-    children: [
-      {
-        id: '1',
-        parentId: '0',
-        name: 'nick',
-        children: [
-          {
-            id: '3',
-            parentId: '1',
-            name: 'pictures',
-            children: [],
-          },
-        ],
-      },
-      {
-        id: '4',
-        parentId: '0',
-        name: 'shared',
-        children: [
-          {
-            id: '5',
-            parentId: '4',
-            name: 'documents',
-            children: [],
-          },
-          {
-            id: '6',
-            parentId: '4',
-            name: 'pictures',
-            children: [],
-          },
-          {
-            id: '2',
-            parentId: '4',
-            name: 'documents',
-            children: [],
-          },
-        ],
-      },
-    ],
-  }];
+  const data = [
+    {
+      id: '0',
+      name: 'nick',
+      children: [
+        {
+          id: '1',
+          name: 'documents',
+          parentId: '0',
+          children: [],
+        },
+      ],
+    },
+    {
+      id: '2',
+      name: 'shared',
+      children: [],
+    },
+  ];
+  const expected = [
+    {
+      id: '0',
+      name: 'nick',
+      children: [],
+    },
+    {
+      id: '2',
+      name: 'shared',
+      children: [
+        {
+          id: '1',
+          name: 'documents',
+          parentId: '2',
+          children: [],
+        },
+      ],
+    },
+  ];
   const result = changeParent(
-    x => x.id === '2',
-    x => x.id === '4',
-    input,
+    hasId('2'),
+    hasId('1'),
+    data,
   );
   t.deepEqual(result, expected);
 });
 
 test('should work with currying', (t) => {
-  const input = {
+  const data = {
     id: '0',
-    parentId: '',
     name: 'users',
     children: [
       {
         id: '1',
-        parentId: '0',
         name: 'nick',
         children: [
           {
             id: '2',
-            parentId: '1',
             name: 'documents',
-            children: [],
-          },
-          {
-            id: '3',
             parentId: '1',
-            name: 'pictures',
             children: [],
           },
         ],
       },
       {
-        id: '4',
-        parentId: '0',
+        id: '3',
         name: 'shared',
-        children: [
-          {
-            id: '5',
-            parentId: '4',
-            name: 'documents',
-            children: [],
-          },
-          {
-            id: '6',
-            parentId: '4',
-            name: 'pictures',
-            children: [],
-          },
-        ],
+        children: [],
       },
     ],
   };
   const expected = {
     id: '0',
-    parentId: '',
     name: 'users',
     children: [
       {
         id: '1',
-        parentId: '0',
         name: 'nick',
-        children: [
-          {
-            id: '3',
-            parentId: '1',
-            name: 'pictures',
-            children: [],
-          },
-        ],
+        children: [],
       },
       {
-        id: '4',
-        parentId: '0',
+        id: '3',
         name: 'shared',
         children: [
           {
-            id: '5',
-            parentId: '4',
-            name: 'documents',
-            children: [],
-          },
-          {
-            id: '6',
-            parentId: '4',
-            name: 'pictures',
-            children: [],
-          },
-          {
             id: '2',
-            parentId: '4',
             name: 'documents',
+            parentId: '3',
             children: [],
           },
         ],
       },
     ],
   };
-  const changeId2Parent = changeParent(x => x.id === '2');
-  const result = changeId2Parent(
-    x => x.id === '4',
-    input,
-  );
+  const moveTo3 = changeParent(hasId('3'));
+  const result = moveTo3(hasId('2'), data);
   t.deepEqual(result, expected);
 });

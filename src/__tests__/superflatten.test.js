@@ -16,7 +16,7 @@ test('should return array with items of tree in a depth first fashion, omitting 
     id: '3',
     children: [],
   };
-  const input = {
+  const data = {
     id: '0',
     children: [
       child,
@@ -29,7 +29,7 @@ test('should return array with items of tree in a depth first fashion, omitting 
     { id: '2' },
     { id: '3' },
   ];
-  const result = superflatten(input);
+  const result = superflatten(data);
   t.deepEqual(result, expected);
 });
 
@@ -48,7 +48,7 @@ test('should work with an array', (t) => {
     id: '3',
     children: [],
   };
-  const input = [{
+  const data = [{
     id: '0',
     children: [
       child,
@@ -61,6 +61,6 @@ test('should work with an array', (t) => {
     { id: '2' },
     { id: '3' },
   ];
-  const result = superflatten(input);
+  const result = superflatten(data);
   t.deepEqual(result, expected);
 });

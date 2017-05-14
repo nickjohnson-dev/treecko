@@ -8,31 +8,27 @@ import addChildBy from './addChildBy';
 import findOr from './findOr';
 import reject from './reject';
 
-function changeParent(predicate, newParentPredicate, xs) {
+function changeParent(newParentPredicate, predicate, xs) {
   const target = findOr('notfound', predicate, xs);
 
   if (target === 'notfound') return xs;
 
-  const newParent = findOr('notfound', newParentPredicate, xs);
-
-  if (newParent === 'notfound') return xs;
-
   return compose(
-    addChildBy(newParentPredicate, {
-      ...target,
-      parentId: newParent.id,
-    }),
+    addChildBy(
+      newParentPredicate,
+      newParent => ({ ...target, parentId: newParent.id }),
+    ),
     reject(isEqual(target)),
   )(xs);
 }
 
-export default curry((predicate, newParentPredicate, data) => {
+export default curry((newParentPredicate, predicate, data) => {
   if (isArray(data)) {
-    return changeParent(predicate, newParentPredicate, data);
+    return changeParent(newParentPredicate, predicate, data);
   }
 
   if (isObject(data)) {
-    return first(changeParent(predicate, newParentPredicate, [data]));
+    return first(changeParent(newParentPredicate, predicate, [data]));
   }
 
   return undefined;

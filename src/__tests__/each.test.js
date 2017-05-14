@@ -11,14 +11,14 @@ test('should invoke iteratee with each node in tree, in a depth first fashion', 
       grandchild,
     ],
   };
-  const input = {
+  const data = {
     children: [
       child,
     ],
   };
   const iteratee = sinon.spy();
-  each(iteratee, input);
-  t.deepEqual(iteratee.getCall(0).args, [input]);
+  each(iteratee, data);
+  t.deepEqual(iteratee.getCall(0).args, [data]);
   t.deepEqual(iteratee.getCall(1).args, [child]);
   t.deepEqual(iteratee.getCall(2).args, [grandchild]);
 });
@@ -32,14 +32,14 @@ test('should work with array', (t) => {
       grandchild,
     ],
   };
-  const input = [{
+  const data = [{
     children: [
       child,
     ],
   }];
   const iteratee = sinon.spy();
-  each(iteratee, input);
-  t.deepEqual(iteratee.getCall(0).args, [input[0]]);
+  each(iteratee, data);
+  t.deepEqual(iteratee.getCall(0).args, [data[0]]);
   t.deepEqual(iteratee.getCall(1).args, [child]);
   t.deepEqual(iteratee.getCall(2).args, [grandchild]);
 });
@@ -53,14 +53,14 @@ test('should work with currying', (t) => {
       grandchild,
     ],
   };
-  const input = {
+  const data = {
     children: [
       child,
     ],
   };
   const iteratee = sinon.spy();
-  each(iteratee)(input);
-  t.deepEqual(iteratee.getCall(0).args, [input]);
+  each(iteratee)(data);
+  t.deepEqual(iteratee.getCall(0).args, [data]);
   t.deepEqual(iteratee.getCall(1).args, [child]);
   t.deepEqual(iteratee.getCall(2).args, [grandchild]);
 });

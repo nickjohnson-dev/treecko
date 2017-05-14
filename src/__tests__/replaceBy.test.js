@@ -2,7 +2,7 @@ import test from 'ava';
 import replaceBy from '../replaceBy';
 
 test('should return tree with items that satisfy predicate replaced by replacement', (t) => {
-  const input = {
+  const data = {
     value: 5,
     children: [
       {
@@ -30,14 +30,14 @@ test('should return tree with items that satisfy predicate replaced by replaceme
   };
   const result = replaceBy(
     x => x.value >= 10,
-    { children: [], value: -1 },
-    input,
+    () => ({ children: [], value: -1 }),
+    data,
   );
   t.deepEqual(result, expected);
 });
 
 test('should work with an array', (t) => {
-  const input = [{
+  const data = [{
     value: 5,
     children: [
       {
@@ -65,14 +65,14 @@ test('should work with an array', (t) => {
   }];
   const result = replaceBy(
     x => x.value >= 10,
-    { children: [], value: -1 },
-    input,
+    () => ({ children: [], value: -1 }),
+    data,
   );
   t.deepEqual(result, expected);
 });
 
 test('should work with currying', (t) => {
-  const input = {
+  const data = {
     value: 5,
     children: [
       {
@@ -100,8 +100,8 @@ test('should work with currying', (t) => {
   };
   const replaceDoubleDigitValues = replaceBy(x => x.value >= 10);
   const result = replaceDoubleDigitValues(
-    { children: [], value: -1 },
-    input,
+    () => ({ children: [], value: -1 }),
+    data,
   );
   t.deepEqual(result, expected);
 });
