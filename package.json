@@ -1,6 +1,6 @@
 {
   "name": "treecko",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Functional tree helpers",
   "main": "dist/index.js",
   "scripts": {
