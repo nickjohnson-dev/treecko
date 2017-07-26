@@ -1,6 +1,6 @@
 # reduceAncestryBy
 
-Returns the result of a reduce operation starting with the first node that satisfies the `predicate` and moving up its ancestry to end with the root of the input `data` structure.
+Returns the result of a reduce operation starting with the first node that satisfies the `predicate` and moving up its ancestry to end with the root of the input `data` structure. Must have matching `id` and `parentId` values to work.
 
 A good use for this method is building the full path for an item in a file structure.
 
