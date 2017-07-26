@@ -7,10 +7,8 @@ notifications:
 node_js:
   - '7'
   - '6'
-  - '4'
 before_script:
   - npm prune
-  - npm install
 script:
   - npm run lint
   - npm run testonce
