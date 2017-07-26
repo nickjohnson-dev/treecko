@@ -12,9 +12,9 @@ before_script:
   - npm prune
   - npm install
 script:
-  - npm lint
-  - npm testonce
-  - npm build
+  - npm run lint
+  - npm run testonce
+  - npm run build
 after_success:
   - npm run semantic-release
 branches:
