@@ -7,7 +7,8 @@
 
 # treecko
 
-[![npm version](https://badge.fury.io/js/treecko.svg)](https://badge.fury.io/js/treecko)
+[![npm](https://img.shields.io/npm/v/treecko.svg?style=flat-square)](https://www.npmjs.com/package/treecko)
+[![Travis](https://img.shields.io/travis/nickjohnson-dev/treecko.svg?style=flat-square)](https://travis-ci.org/nickjohnson-dev/treecko)
 
 A collection of **functional** and **immutable** helpers for working with **tree** data structures.
 
