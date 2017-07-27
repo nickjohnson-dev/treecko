@@ -3,10 +3,10 @@ import isArray from 'lodash/fp/isArray';
 import isObject from 'lodash/fp/isObject';
 import lodashEach from 'lodash/fp/each';
 
-function each(iteratee, xs) {
+function each(iteratee, xs, metadata = {}) {
   lodashEach((x) => {
-    iteratee(x);
-    each(iteratee, x.children);
+    iteratee(x, metadata);
+    each(iteratee, x.children, { parent: x });
   }, xs);
 }
 

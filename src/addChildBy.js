@@ -7,7 +7,7 @@ import replaceChildrenBy from './replaceChildrenBy';
 function addChildBy(predicate, getChild, xs) {
   return replaceChildrenBy(
     predicate,
-    x => [...x.children, getChild(x)],
+    (x, metadata) => [...x.children, getChild(x, metadata)],
     xs,
   );
 }

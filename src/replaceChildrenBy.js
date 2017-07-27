@@ -7,7 +7,7 @@ import hardMapBy from './hardMapBy';
 function replaceChildrenBy(predicate, getNewChildren, xs) {
   return hardMapBy(
     predicate,
-    x => ({ ...x, children: getNewChildren(x) }),
+    (x, metadata) => ({ ...x, children: getNewChildren(x, metadata) }),
     xs,
   );
 }
