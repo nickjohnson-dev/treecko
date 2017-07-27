@@ -81,3 +81,42 @@ test('should work with currying', (t) => {
   );
   t.deepEqual(result, expected);
 });
+
+test('should invoke iteratee with metadata including parent', (t) => {
+  const data = {
+    value: 5,
+    children: [
+      {
+        value: 10,
+        children: [],
+      },
+    ],
+  };
+  const expected = {
+    value: 5,
+    children: [
+      {
+        value: 20,
+        children: [],
+        parent: {
+          value: 5,
+          children: [
+            {
+              value: 10,
+              children: [],
+            },
+          ],
+        },
+      },
+    ],
+  };
+  const result = softMapBy(
+    x => x.value >= 10,
+    (x, { parent }) => ({
+      value: x.value * 2,
+      parent,
+    }),
+    data,
+  );
+  t.deepEqual(result, expected);
+});

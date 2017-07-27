@@ -4,10 +4,12 @@ import isArray from 'lodash/fp/isArray';
 import isObject from 'lodash/fp/isObject';
 import map from 'lodash/fp/map';
 
-function softMapBy(predicate, iteratee, xs) {
+function softMapBy(predicate, iteratee, xs, metadata = {}) {
   return map(x => ({
-    ...(predicate(x) ? iteratee(x) : x),
-    children: softMapBy(predicate, iteratee, x.children),
+    ...(predicate(x, metadata) ? iteratee(x, metadata) : x),
+    children: softMapBy(predicate, iteratee, x.children, {
+      parent: x,
+    }),
   }), xs);
 }
 

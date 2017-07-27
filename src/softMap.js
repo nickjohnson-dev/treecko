@@ -4,10 +4,12 @@ import isArray from 'lodash/fp/isArray';
 import isObject from 'lodash/fp/isObject';
 import map from 'lodash/fp/map';
 
-function softMap(iteratee, xs) {
+function softMap(iteratee, xs, metadata = {}) {
   return map(x => ({
-    ...iteratee(x),
-    children: softMap(iteratee, x.children),
+    ...iteratee(x, metadata),
+    children: softMap(iteratee, x.children, {
+      parent: x,
+    }),
   }), xs);
 }
 
