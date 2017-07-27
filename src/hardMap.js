@@ -4,8 +4,8 @@ import isArray from 'lodash/fp/isArray';
 import isObject from 'lodash/fp/isObject';
 import map from 'lodash/fp/map';
 
-function hardMap(iteratee, xs) {
-  return map(x => iteratee(x), xs);
+function hardMap(iteratee, xs, metadata = {}) {
+  return map(x => iteratee(x, metadata), xs);
 }
 
 export default curry((iteratee, data) => {

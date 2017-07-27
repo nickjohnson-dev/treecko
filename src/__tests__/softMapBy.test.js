@@ -1,3 +1,4 @@
+import sinon from 'sinon';
 import test from 'ava';
 import softMapBy from '../softMapBy';
 
@@ -82,7 +83,8 @@ test('should work with currying', (t) => {
   t.deepEqual(result, expected);
 });
 
-test('should invoke iteratee with metadata including parent', (t) => {
+test('should invoke iteratee with metadata', (t) => {
+  const iteratee = sinon.spy();
   const data = {
     value: 5,
     children: [
@@ -92,31 +94,65 @@ test('should invoke iteratee with metadata including parent', (t) => {
       },
     ],
   };
-  const expected = {
+  const expected = [
+    {
+      value: 10,
+      children: [],
+    },
+    {
+      parent: {
+        value: 5,
+        children: [
+          {
+            value: 10,
+            children: [],
+          },
+        ],
+      },
+    },
+  ];
+  softMapBy(
+    x => x.value >= 10,
+    iteratee,
+    data,
+  );
+  const result = iteratee.getCall(0).args;
+  t.deepEqual(result, expected);
+});
+
+test('should invoke predicate with metadata', (t) => {
+  const predicate = sinon.spy();
+  const data = {
     value: 5,
     children: [
       {
-        value: 20,
+        value: 10,
         children: [],
-        parent: {
-          value: 5,
-          children: [
-            {
-              value: 10,
-              children: [],
-            },
-          ],
-        },
       },
     ],
   };
-  const result = softMapBy(
-    x => x.value >= 10,
-    (x, { parent }) => ({
-      value: x.value * 2,
-      parent,
-    }),
+  const expected = [
+    {
+      value: 10,
+      children: [],
+    },
+    {
+      parent: {
+        value: 5,
+        children: [
+          {
+            value: 10,
+            children: [],
+          },
+        ],
+      },
+    },
+  ];
+  softMapBy(
+    predicate,
+    x => x,
     data,
   );
+  const result = predicate.getCall(1).args;
   t.deepEqual(result, expected);
 });

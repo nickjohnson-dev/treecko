@@ -1,3 +1,4 @@
+import sinon from 'sinon';
 import test from 'ava';
 import softMap from '../softMap';
 
@@ -75,7 +76,8 @@ test('should work with currying', (t) => {
   t.deepEqual(result, expected);
 });
 
-test('should invoke iteratee with metadata including parent', (t) => {
+test('should invoke iteratee with metadata', (t) => {
+  const iteratee = sinon.spy();
   const data = {
     value: 5,
     children: [
@@ -85,28 +87,24 @@ test('should invoke iteratee with metadata including parent', (t) => {
       },
     ],
   };
-  const expected = {
-    value: 10,
-    children: [
-      {
-        value: 20,
-        children: [],
-        parent: {
-          value: 5,
-          children: [
-            {
-              value: 10,
-              children: [],
-            },
-          ],
-        },
+  const expected = [
+    {
+      value: 10,
+      children: [],
+    },
+    {
+      parent: {
+        value: 5,
+        children: [
+          {
+            value: 10,
+            children: [],
+          },
+        ],
       },
-    ],
-    parent: undefined,
-  };
-  const result = softMap((x, { parent }) => ({
-    value: x.value * 2,
-    parent,
-  }), data);
+    },
+  ];
+  softMap(iteratee, data);
+  const result = iteratee.getCall(1).args;
   t.deepEqual(result, expected);
 });

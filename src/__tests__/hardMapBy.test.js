@@ -1,3 +1,4 @@
+import sinon from 'sinon';
 import test from 'ava';
 import hardMapBy from '../hardMapBy';
 
@@ -76,5 +77,79 @@ test('should work with currying', (t) => {
     x => ({ value: x.value * 2 }),
     data,
   );
+  t.deepEqual(result, expected);
+});
+
+test('should invoke iteratee with metadata', (t) => {
+  const iteratee = sinon.spy();
+  const data = {
+    value: 5,
+    children: [
+      {
+        value: 10,
+        children: [],
+      },
+    ],
+  };
+  const expected = [
+    {
+      value: 10,
+      children: [],
+    },
+    {
+      parent: {
+        value: 5,
+        children: [
+          {
+            value: 10,
+            children: [],
+          },
+        ],
+      },
+    },
+  ];
+  hardMapBy(
+    x => x.value >= 10,
+    iteratee,
+    data,
+  );
+  const result = iteratee.getCall(0).args;
+  t.deepEqual(result, expected);
+});
+
+test('should invoke predicate with metadata', (t) => {
+  const predicate = sinon.spy(() => false);
+  const data = {
+    value: 5,
+    children: [
+      {
+        value: 10,
+        children: [],
+      },
+    ],
+  };
+  const expected = [
+    {
+      value: 10,
+      children: [],
+    },
+    {
+      parent: {
+        value: 5,
+        children: [
+          {
+            value: 10,
+            children: [],
+          },
+        ],
+      },
+    },
+  ];
+  hardMapBy(
+    predicate,
+    x => x,
+    data,
+  );
+  const result = predicate.getCall(1).args;
   t.deepEqual(result, expected);
 });

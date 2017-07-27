@@ -4,10 +4,19 @@ import isArray from 'lodash/fp/isArray';
 import isObject from 'lodash/fp/isObject';
 import map from 'lodash/fp/map';
 
-function hardMapBy(predicate, iteratee, xs) {
-  return map(x => (predicate(x)
-    ? iteratee(x)
-    : { ...x, children: hardMapBy(predicate, iteratee, x.children) }),
+function hardMapBy(predicate, iteratee, xs, metadata = {}) {
+  return map(x => (predicate(x, metadata)
+    ? iteratee(x, metadata)
+    : {
+      ...x,
+      children: hardMapBy(
+        predicate,
+        iteratee,
+        x.children,
+        {
+          parent: x,
+        }),
+    }),
     xs,
   );
 }
