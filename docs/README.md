@@ -1,6 +1,6 @@
 # Documentation
 
-- Both **Trees : Object** and **Tree Lists : Array<Object>** are supported.
+- Both **Trees : Object** and **Tree Lists : Array\<Object\>** are supported.
 - **Curried** for partial application.
 
 ## Mapping
