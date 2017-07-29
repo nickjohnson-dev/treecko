@@ -12,8 +12,8 @@
 
 A collection of **functional** and **immutable** helpers for working with **tree** data structures.
 
-- Both **Trees : Object** and **Tree Lists : Array<Object>** are supported.
-- **Curried** for partial application.
+- Both **Trees : Object** and **Tree Lists : Array\<Object\>** are supported.
+- **Curried** for easy partial application.
 
 ### Mapping
 
