@@ -33,3 +33,11 @@ treecko.each(iteratee, data);
 // Node ID: c
 // Node ID: d
 ```
+
+The `iteratee` function receives a metadata object as its second argument, with the following interface.
+
+```
+type metadata = {
+  parent: Object;
+};
+```

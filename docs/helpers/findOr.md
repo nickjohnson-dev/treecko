@@ -46,3 +46,11 @@ const badPredicate = node => node.name === 'picture';
 const badResult = treecko.findOr(defaultValue, badPredicate, data);
 // { error: 'Node not found' }
 ```
+
+The `predicate` function receives a metadata object as its second argument, with the following interface.
+
+```
+type metadata = {
+  parent: Object;
+};
+```

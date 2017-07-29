@@ -75,3 +75,11 @@ const result = treecko.replaceChildrenBy(
 //   ],
 // }
 ```
+
+The `getNewChildren` and `predicate` functions receive a metadata object as their second arguments, with the following interface.
+
+```
+type metadata = {
+  parent: Object;
+};
+```

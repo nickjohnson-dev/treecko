@@ -1,3 +1,4 @@
+import getOr from 'lodash/fp/getOr';
 import test from 'ava';
 import reduce from '../reduce';
 
@@ -79,6 +80,34 @@ test('should work currying', (t) => {
   const expected = 'abcd';
   const sumReduce = reduce((acc, cur) => `${acc}${cur.value}`);
   const result = sumReduce(
+    '',
+    data,
+  );
+  t.deepEqual(result, expected);
+});
+
+test('should invoke reducer with metadata', (t) => {
+  const data = {
+    value: 'a',
+    children: [
+      {
+        value: 'b',
+        children: [
+          {
+            value: 'c',
+            children: [],
+          },
+        ],
+      },
+      {
+        value: 'd',
+        children: [],
+      },
+    ],
+  };
+  const expected = '(a)(ab)(bc)(ad)';
+  const result = reduce(
+    (acc, cur, { parent }) => `${acc}(${getOr('', 'value', parent)}${cur.value})`,
     '',
     data,
   );

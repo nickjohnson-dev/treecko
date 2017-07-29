@@ -31,3 +31,11 @@ const startingValue = '';
 const result = treecko.reduce(reducer, startingValue, data);
 // abcd
 ```
+
+The `reducer` function receives a metadata object as its second argument, with the following interface.
+
+```
+type metadata = {
+  parent: Object;
+};
+```

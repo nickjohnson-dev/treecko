@@ -1,6 +1,8 @@
 # addChildBy
 
+
 Returns a copy of the input `data` structure with the return value of `getChild` invoked with the node added to the children of the first node that satisfies the `predicate`.
+
 
 ```javascript
 import treecko from 'treecko';
@@ -49,4 +51,12 @@ const result = treecko.addChildBy(predicate, getChild, data);
 //     },
 //   ],
 // }
+```
+
+The `getChild` and `predicate` functions receive a metadata object as their second arguments, with the following interface.
+
+```
+type metadata = {
+  parent: Object;
+};
 ```
