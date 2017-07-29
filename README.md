@@ -12,58 +12,57 @@
 
 A collection of **functional** and **immutable** helpers for working with **tree** data structures.
 
-- All of the following helpers support tree objects as well as arrays of tree objects.
-- All methods are curried, so you can use partial application.
-- Tree nodes must have a `children` array.
+- Both **Trees : Object** and **Tree Lists : Array<Object>** are supported.
+- **Curried** for partial application.
 
 ### Mapping
 
-- [softMap](docs/helpers/softMap.md)
-- [softMapBy](docs/helpers/softMapBy.md)
-- [hardMap](docs/helpers/hardMap.md)
-- [hardMapBy](docs/helpers/hardMapBy.md)
+- [softMap](docs/softMap.md)
+- [softMapBy](docs/softMapBy.md)
+- [hardMap](docs/hardMap.md)
+- [hardMapBy](docs/hardMapBy.md)
 
 
 ### Reducing
 
-- [reduce](docs/helpers/reduce.md)
-- [reduceAncestryBy](docs/helpers/reduceAncestryBy.md)
+- [reduce](docs/reduce.md)
+- [reduceAncestryBy](docs/reduceAncestryBy.md)
 
 
 ### Finding
 
-- [findOr](docs/helpers/findOr.md)
+- [findOr](docs/findOr.md)
 
 
 ### Filtering
 
-- [filter](docs/helpers/filter.md)
-- [reject](docs/helpers/reject.md)
+- [filter](docs/filter.md)
+- [reject](docs/reject.md)
 
 
 ### Side Effects
 
-- [each](docs/helpers/each.md)
+- [each](docs/each.md)
 
 
 ### Flattening
 
-- [flatten](docs/helpers/flatten.md)
-- [superflatten](docs/helpers/superflatten.md)
-- [flattenToIds](docs/helpers/flattenToIds.md)
-- [flattenToMap](docs/helpers/flattenToMap.md)
+- [flatten](docs/flatten.md)
+- [superflatten](docs/superflatten.md)
+- [flattenToIds](docs/flattenToIds.md)
+- [flattenToMap](docs/flattenToMap.md)
 
 
 ### Restructuring
 
-- [replaceChildrenBy](docs/helpers/replaceChildrenBy.md)
-- [addChildBy](docs/helpers/addChildBy.md)
-- [changeParent](docs/helpers/changeParent.md)
+- [replaceChildrenBy](docs/replaceChildrenBy.md)
+- [addChildBy](docs/addChildBy.md)
+- [changeParent](docs/changeParent.md)
 
 
 ### Misc
 
-- [hasId](docs/helpers/hasId.md)
+- [hasId](docs/hasId.md)
 
 
 # TODO
