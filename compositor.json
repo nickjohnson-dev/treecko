@@ -7,29 +7,26 @@
   "title": "Treecko",
   "branch": "master",
   "style": {
-    "name": "Swiss",
+    "name": "Williamsburg",
     "componentSet": {
       "nav": "nav/BasicNav",
-      "header": "header/SwissHeader",
-      "article": "article/SwissArticle",
+      "header": "header/LightBannerHeader",
+      "article": "article/ReaderArticle",
       "footer": "footer/BasicFooter"
     },
-    "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "fontFamily": "Montserrat, sans-serif",
     "heading": {
-      "fontWeight": 700,
-      "letterSpacing": "-0.01em"
-    },
-    "layout": {
-      "fluid": true
+      "fontWeight": 600,
+      "letterSpacing": "0.1em"
     },
     "colors": {
-      "text": "#000",
+      "text": "#346",
       "background": "#fff",
-      "primary": "#05a",
-      "secondary": "#444",
-      "highlight": "#f30",
-      "border": "#ccc",
-      "muted": "#eee"
+      "primary": "#0099e0",
+      "secondary": "#ab61ff",
+      "highlight": "#f7b",
+      "muted": "#fffab3",
+      "border": "#ccd"
     }
   },
   "content": [
