@@ -12,7 +12,7 @@
     "prebuild": "npm run clean -s",
     "precommit": "npm run lint && npm run testonce",
     "test": "ava --watch",
-    "testonce": "ava",
+    "testonce": "nyc ava",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
@@ -36,6 +36,7 @@
     "babel-preset-es2015": "6.22.0",
     "babel-preset-es2017": "6.22.0",
     "babel-preset-stage-3": "6.22.0",
+    "codecov": "2.3.0",
     "commitizen": "2.9.6",
     "cz-conventional-changelog": "2.0.0",
     "eslint": "3.15.0",
@@ -43,6 +44,7 @@
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-lodash-fp": "2.1.3",
     "husky": "0.14.3",
+    "nyc": "11.2.1",
     "rimraf": "^2.6.1",
     "semantic-release": "^6.3.6",
     "sinon": "^2.2.0"
