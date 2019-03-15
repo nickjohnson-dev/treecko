@@ -5,49 +5,49 @@
 
 ## Mapping
 
-- [softMap](docs/softMap.md)
-- [softMapBy](docs/softMapBy.md)
-- [hardMap](docs/hardMap.md)
-- [hardMapBy](docs/hardMapBy.md)
+- [softMap](softMap.md)
+- [softMapBy](softMapBy.md)
+- [hardMap](hardMap.md)
+- [hardMapBy](hardMapBy.md)
 
 
 ## Reducing
 
-- [reduce](docs/reduce.md)
-- [reduceAncestryBy](docs/reduceAncestryBy.md)
+- [reduce](reduce.md)
+- [reduceAncestryBy](reduceAncestryBy.md)
 
 
 ## Finding
 
-- [findOr](docs/findOr.md)
+- [findOr](findOr.md)
 
 
 ## Filtering
 
-- [filter](docs/filter.md)
-- [reject](docs/reject.md)
+- [filter](filter.md)
+- [reject](reject.md)
 
 
 ## Side Effects
 
-- [each](docs/each.md)
+- [each](each.md)
 
 
 ## Flattening
 
-- [flatten](docs/flatten.md)
-- [superflatten](docs/superflatten.md)
-- [flattenToIds](docs/flattenToIds.md)
-- [flattenToMap](docs/flattenToMap.md)
+- [flatten](flatten.md)
+- [superflatten](superflatten.md)
+- [flattenToIds](flattenToIds.md)
+- [flattenToMap](flattenToMap.md)
 
 
 ## Restructuring
 
-- [replaceChildrenBy](docs/replaceChildrenBy.md)
-- [addChildBy](docs/addChildBy.md)
-- [changeParent](docs/changeParent.md)
+- [replaceChildrenBy](replaceChildrenBy.md)
+- [addChildBy](addChildBy.md)
+- [changeParent](changeParent.md)
 
 
 ## Misc
 
-- [hasId](docs/hasId.md)
+- [hasId](hasId.md)
