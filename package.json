@@ -46,7 +46,7 @@
     "husky": "0.14.3",
     "nyc": "11.2.1",
     "rimraf": "^2.6.1",
-    "semantic-release": "^6.3.6",
+    "semantic-release": "^17.2.3",
     "sinon": "^2.2.0"
   },
   "ava": {
